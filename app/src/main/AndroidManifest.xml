@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackComposestatemanagement">
         <activity
-            android:name=".MainActivity"
+            android:name=".todo.TodoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
