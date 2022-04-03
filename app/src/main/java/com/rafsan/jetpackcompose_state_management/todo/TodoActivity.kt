@@ -6,8 +6,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import com.rafsan.jetpackcompose_state_management.ui.StateCodelabTheme
 
 class TodoActivity : AppCompatActivity() {
@@ -27,11 +25,10 @@ class TodoActivity : AppCompatActivity() {
 
     @Composable
     private fun TodoActivityScreen(todoViewModel: TodoViewModel) {
-        val items: List<TodoItem> by todoViewModel.todoItems.observeAsState(listOf())
         TodoScreen(
-            items = items,
-            onAddItem = { todoViewModel.addItem(it) },
-            onRemoveItem = { todoViewModel.removeItem(it) }
+            items = todoViewModel.todoItems,
+            onAddItem = todoViewModel::addItem,
+            onRemoveItem = todoViewModel::removeItem
         )
     }
 }
