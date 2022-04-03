@@ -37,16 +37,29 @@ fun TodoScreen(
         TodoItemInputBackground(elevate = true, modifier = Modifier.fillMaxWidth()) {
             TodoItemInput(onItemComplete = onAddItem)
         }
-    }
 
-    // For quick testing, a random item generator button
-    Button(
-        onClick = { onAddItem(generateRandomTodoItem()) },
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-    ) {
-        Text("Add random item")
+        LazyColumn(
+            modifier = Modifier.weight(1f),
+            contentPadding = PaddingValues(top = 8.dp)
+        ) {
+            items(items = items) {
+                TodoRow(
+                    todo = it,
+                    onItemClicked = { onRemoveItem(it) },
+                    modifier = Modifier.fillParentMaxWidth()
+                )
+            }
+        }
+
+        // For quick testing, a random item generator button
+        Button(
+            onClick = { onAddItem(generateRandomTodoItem()) },
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+        ) {
+            Text("Add random item")
+        }
     }
 }
 
@@ -97,14 +110,14 @@ fun PreviewTodoScreen() {
 }
 
 @Composable
-fun TodoInputTextField(modifier: Modifier) {
-    val (text, setText) = remember { mutableStateOf("") }
-    TodoInputText(text, setText, modifier)
+fun TodoInputTextField(text: String, onTextChange: (String) -> Unit, modifier: Modifier) {
+    TodoInputText(text, onTextChange, modifier)
 }
 
 @Composable
 fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
     // onItemComplete is an event will fire when an item is completed by the user
+    val (text, setText) = remember { mutableStateOf("") }
     Column {
         Row(
             Modifier
@@ -112,14 +125,20 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
                 .padding(top = 16.dp)
         ) {
             TodoInputTextField(
-                Modifier
+                text = text,
+                onTextChange = setText,
+                modifier = Modifier
                     .weight(1f)
                     .padding(end = 8.dp)
             )
             TodoEditButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    onItemComplete(TodoItem(text))
+                    setText("")
+                },
                 text = "Add",
-                modifier = Modifier.align(Alignment.CenterVertically)
+                modifier = Modifier.align(Alignment.CenterVertically),
+                enabled = text.isNotBlank() // enable if text is not blank
             )
         }
     }
