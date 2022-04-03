@@ -9,11 +9,15 @@
         <entry key="../../../../../../layout/compose-model-1647804666505.xml" value="0.19166666666666668" />
         <entry key="../../../../../../layout/compose-model-1648384368934.xml" value="0.19166666666666668" />
         <entry key="../../../../../../layout/compose-model-1648384391328.xml" value="0.23522727272727273" />
+        <entry key="../../../../../../layout/compose-model-1648666077013.xml" value="0.19166666666666668" />
+        <entry key="../../../../../../layout/compose-model-1648906353637.xml" value="0.19166666666666668" />
+        <entry key="../../../../../../layout/compose-model-1648964457084.xml" value="0.19166666666666668" />
+        <entry key="../../../../../../layout/compose-model-1648971846430.xml" value="0.23522727272727273" />
         <entry key="app/src/main/res/layout/activity_hello_codelab.xml" value="0.20425724637681159" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
